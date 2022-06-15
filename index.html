@@ -15,7 +15,7 @@
   <body>
     <header>
       <h1>My Bookshelf</h1>
-      <button>Add Book</button>
+      <button id="add-book">Add Book</button>
     </header>
     <main>
       <div class="empty-state">
@@ -33,5 +33,45 @@
         for The Odin Project Javascript curriculum
       </p>
     </footer>
+    <div class="form-container">
+      <form method="post" class="add-book-form">
+        <h3>Add new book</h3>
+        <p>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title"
+            required
+          />
+        </p>
+        <p>
+          <label for="author">Author</label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Author"
+            required
+          />
+        </p>
+        <p>
+          <label for="pages">Pages</label>
+          <input
+            type="text"
+            name="pages"
+            id="pages"
+            placeholder="Pages"
+            required
+          />
+        </p>
+        <div class="hasRead">
+          <label for="read">Have you read it?</label>
+          <input class="checkbox" type="checkbox" id="read" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -16,3 +16,8 @@ const book1 = new Book("Travels With Charley", "John Steinbeck", 244, true);
 console.log(book1.showInfo());
 
 function addBookToLibrary(book) {}
+
+const btnAddBook = document.getElementById("add-book");
+btnAddBook.addEventListener("click", openAddBookForm);
+
+const openAddBookForm = () => {};

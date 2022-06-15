@@ -48,6 +48,7 @@ main {
 }
 
 .empty-state {
+  visibility: visible;
   position: relative;
   top: 220px;
   display: flex;
