@@ -5,6 +5,11 @@ class Book {
     this.pages = pages;
     this.hasRead = hasRead;
   }
+
+  showInfo() {
+    let hasReadText = this.hasRead ? "read" : "unread";
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${hasReadText}`;
+  }
 }
 
 class Bookshelf {
@@ -33,15 +38,9 @@ class Bookshelf {
 
 const bookshelf = new Bookshelf();
 
-Book.prototype.showInfo = function () {
-  let hasReadText = this.hasRead ? "read" : "unread";
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${hasReadText}`;
-};
-
 const book1 = new Book("Travels With Charley", "John Steinbeck", 244, true);
+bookshelf.addBook(book1);
 console.log(book1.showInfo());
-
-function addBookToLibrary(book) {}
 
 const btnAddBook = document.getElementById("add-book");
 btnAddBook.addEventListener("click", openAddBookForm);
