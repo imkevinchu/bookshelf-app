@@ -7,6 +7,10 @@
     <title>My Bookshelf</title>
     <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/4e480915d8.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -14,7 +18,11 @@
       <button>Add Book</button>
     </header>
     <main>
-      <div>My books</div>
+      <div class="empty-state">
+        <i class="fa-regular fa-face-frown-open"></i>
+        <h3>Empty bookshelf</h3>
+        <p>There are no books on your bookshelf yet</p>
+      </div>
     </main>
     <footer>
       <p>
