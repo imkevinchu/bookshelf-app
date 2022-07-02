@@ -42,7 +42,18 @@ const book1 = new Book("Travels With Charley", "John Steinbeck", 244, true);
 bookshelf.addBook(book1);
 console.log(book1.showInfo());
 
-const btnAddBook = document.getElementById("add-book");
-btnAddBook.addEventListener("click", openAddBookForm);
+const addBookBtn = document.getElementById("addBookBtn");
+const addBookSubmitBtn = document.getElementById("addBookSubmitBtn");
+const formContainer = document.getElementById("formContainer");
+const formOverlay = document.getElementById("formOverlay");
+const formCloseBtn = document.getElementById("close");
 
-const openAddBookForm = () => {};
+const openAddBookForm = () => {
+  formOverlay.classList.add("active");
+  formContainer.classList.add("active");
+};
+
+const closeAddBookForm = () => {
+  formOverlay.classList.remove("active");
+  formContainer.classList.remove("active");
+};
