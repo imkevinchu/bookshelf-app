@@ -55,12 +55,16 @@ main {
 }
 
 .empty-state {
-  visibility: visible;
+  visibility: hidden;
   position: relative;
   top: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.empty-state.active {
+  visibility: visible;
 }
 
 .empty-state i {
