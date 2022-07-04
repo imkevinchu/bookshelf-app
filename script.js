@@ -21,12 +21,14 @@ class Bookshelf {
     if (!this.isInLibrary(newBook)) {
       this.books.push(newBook);
     }
-    toggleEmptyStateDisplay();
   }
 
   removeBook(title) {
     this.books = this.books.filter((book) => book.title !== title);
-    toggleEmptyStateDisplay();
+  }
+
+  toggleRead(title) {
+    return;
   }
 
   getBook(title) {
@@ -38,15 +40,22 @@ class Bookshelf {
   }
 
   isEmpty() {
-    return this.books.isEmpty();
+    return this.books.length === 0;
   }
 }
 
 const bookshelf = new Bookshelf();
 
-// const book1 = new Book("Travels With Charley", "John Steinbeck", 244, true);
-// bookshelf.addBook(book1);
-// console.log(book1.showInfo());
+const book1 = new Book("Travels With Charley", "John Steinbeck", 244, true);
+const book2 = new Book(
+  "Around the World in Eighty Days",
+  "Jules Verne",
+  160,
+  true
+);
+bookshelf.addBook(book1);
+bookshelf.addBook(book2);
+console.log(book1.showInfo());
 
 const addBookBtn = document.getElementById("addBookBtn");
 const addBookSubmitBtn = document.getElementById("addBookSubmitBtn");
@@ -54,6 +63,7 @@ const formContainer = document.getElementById("formContainer");
 const formOverlay = document.getElementById("formOverlay");
 const formCloseBtn = document.getElementById("close");
 const emptyState = document.getElementById("emptyState");
+const bookGrid = document.getElementById("bookGrid");
 
 const openAddBookForm = () => {
   formOverlay.classList.add("active");
@@ -65,6 +75,33 @@ const closeAddBookForm = () => {
   formContainer.classList.remove("active");
 };
 
+const addBookFromForm = () => {
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const hasRead = document.getElementById("hasRead").checked;
+  const newBook = new Book(title, author, pages, hasRead);
+
+  bookshelf.addBook(newBook);
+  updateGrid();
+};
+
+const updateGrid = () => {
+  resetGrid();
+  toggleEmptyStateDisplay();
+  displayBooks();
+};
+
+const resetGrid = () => {
+  bookGrid.innerHTML = "";
+};
+
+const displayBooks = () => {
+  for (let book of bookshelf.books) {
+    createBookCard(book);
+  }
+};
+
 const toggleEmptyStateDisplay = () => {
   if (bookshelf.isEmpty()) {
     emptyState.classList.add("active");
@@ -72,3 +109,44 @@ const toggleEmptyStateDisplay = () => {
     emptyState.classList.remove("active");
   }
 };
+
+const createBookCard = (book) => {
+  const bookCard = document.createElement("div");
+  const title = document.createElement("p");
+  const author = document.createElement("p");
+  const pages = document.createElement("p");
+  const buttonGroup = document.createElement("div");
+  const readBtn = document.createElement("button");
+  const removeBtn = document.createElement("button");
+
+  bookCard.classList.add("book-card");
+  buttonGroup.classList.add("button-group");
+  readBtn.classList.add("btn");
+  removeBtn.classList.add("btn");
+
+  title.textContent = `"${book.title}"`;
+  author.textContent = `${book.author}`;
+  pages.textContent = `${book.pages} pages`;
+  removeBtn.textContent = "Remove";
+
+  readBtn.onclick = bookshelf.toggleRead(title);
+  removeBtn.onclick = bookshelf.removeBook(title);
+
+  if (book.hasRead) {
+    readBtn.textContent = "Read";
+    readBtn.classList.add("btn-light-green");
+  } else {
+    readBtn.textContent = "Not read";
+    readBtn.classList.add("btn-light-red");
+  }
+
+  bookCard.appendChild(title);
+  bookCard.appendChild(author);
+  bookCard.appendChild(pages);
+  buttonGroup.appendChild(readBtn);
+  buttonGroup.appendChild(removeBtn);
+  bookCard.appendChild(buttonGroup);
+  bookGrid.appendChild(bookCard);
+};
+
+window.onload = updateGrid();
