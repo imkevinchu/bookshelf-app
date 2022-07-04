@@ -4,12 +4,6 @@ This is a solution to the [library project on The Odin Project](https://www.theo
 
 ## Overview
 
-### Preview
-
-![](./screenshot-1.jpg)
-![](./screenshot-2.jpg)
-![](./screenshot-3.jpg)
-
 ## Features
 
 - Empty state background
@@ -24,3 +18,8 @@ This is a solution to the [library project on The Odin Project](https://www.theo
 - Object-oriented JS
 - CSS Grid
 - Flexbox
+
+### Preview
+
+![](./screenshot-1.jpg)
+![](./screenshot-2.jpg)
