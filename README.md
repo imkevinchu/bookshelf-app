@@ -21,6 +21,6 @@ This is a solution to the [library project on The Odin Project](https://www.theo
 
 ### Preview
 
-![](./screenshot-1.jpg)
-![](./screenshot-2.jpg)
-![](./screenshot-3.jpg)
+![](./screenshots/screenshot-1.jpg)
+![](./screenshots/screenshot-2.jpg)
+![](./screenshots/screenshot-3.jpg)
