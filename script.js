@@ -27,9 +27,9 @@ class Bookshelf {
     this.books = this.books.filter((book) => book.title !== title);
   }
 
-  toggleRead(title) {
-    return;
-  }
+  // toggleRead(title) {
+  //   return;
+  // }
 
   getBook(title) {
     return (this.books = this.books.find((book) => book.title === title));
@@ -91,6 +91,15 @@ const addBookFromForm = () => {
   updateGrid();
 };
 
+const removeBookFromGrid = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll(
+    '"',
+    ""
+  );
+  bookshelf.removeBook(title);
+  updateGrid();
+};
+
 const updateGrid = () => {
   resetGrid();
   toggleEmptyStateDisplay();
@@ -134,8 +143,8 @@ const createBookCard = (book) => {
   pages.textContent = `${book.pages} pages`;
   removeBtn.textContent = "Remove";
 
-  readBtn.onclick = bookshelf.toggleRead(title);
-  removeBtn.onclick = bookshelf.removeBook(title);
+  // readBtn.onclick = bookshelf.toggleRead(title);
+  removeBtn.onclick = removeBookFromGrid;
 
   if (book.hasRead) {
     readBtn.textContent = "Read";
