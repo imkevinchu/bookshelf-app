@@ -1,6 +1,6 @@
 # bookshelf-app
 
-This is a solution to the [library project on The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library)).
+This is a solution to the [library project on The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library).
 
 ## Overview
 
