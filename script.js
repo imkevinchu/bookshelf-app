@@ -53,11 +53,14 @@ const book2 = new Book(
   160,
   true
 );
+const book3 = new Book("The Da Vinci Code", "Dan Brown", 489, false);
 bookshelf.addBook(book1);
 bookshelf.addBook(book2);
+bookshelf.addBook(book3);
 console.log(book1.showInfo());
 
 const addBookBtn = document.getElementById("addBookBtn");
+const addBookForm = document.getElementById("addBookForm");
 const addBookSubmitBtn = document.getElementById("addBookSubmitBtn");
 const formContainer = document.getElementById("formContainer");
 const formOverlay = document.getElementById("formOverlay");
@@ -73,6 +76,7 @@ const openAddBookForm = () => {
 const closeAddBookForm = () => {
   formOverlay.classList.remove("active");
   formContainer.classList.remove("active");
+  addBookForm.reset();
 };
 
 const addBookFromForm = () => {
@@ -83,6 +87,7 @@ const addBookFromForm = () => {
   const newBook = new Book(title, author, pages, hasRead);
 
   bookshelf.addBook(newBook);
+  closeAddBookForm();
   updateGrid();
 };
 

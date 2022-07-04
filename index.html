@@ -71,10 +71,15 @@
           />
         </p>
         <div class="hasRead">
-          <label for="read">Have you read it?</label>
-          <input class="checkbox" type="checkbox" id="read" />
+          <label for="hasRead">Have you read it?</label>
+          <input class="checkbox" type="checkbox" id="hasRead" />
         </div>
-        <button type="submit" class="btn" id="addBookSubmitBtn">
+        <button
+          type="button"
+          class="btn"
+          id="addBookSubmitBtn"
+          onclick="addBookFromForm()"
+        >
           Add Book
         </button>
       </form>
