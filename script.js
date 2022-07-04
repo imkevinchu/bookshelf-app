@@ -10,6 +10,10 @@ class Book {
     let hasReadText = this.hasRead ? "read" : "unread";
     return `${this.title} by ${this.author}, ${this.pages} pages, ${hasReadText}`;
   }
+
+  toggleRead() {
+    this.hasRead = !this.hasRead;
+  }
 }
 
 class Bookshelf {
@@ -27,12 +31,8 @@ class Bookshelf {
     this.books = this.books.filter((book) => book.title !== title);
   }
 
-  // toggleRead(title) {
-  //   return;
-  // }
-
   getBook(title) {
-    return (this.books = this.books.find((book) => book.title === title));
+    return this.books.find((book) => book.title === title);
   }
 
   isInLibrary(newBook) {
@@ -100,6 +100,16 @@ const removeBookFromGrid = (e) => {
   updateGrid();
 };
 
+const toggleRead = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll(
+    '"',
+    ""
+  );
+  const book = bookshelf.getBook(title);
+  book.toggleRead();
+  updateGrid();
+};
+
 const updateGrid = () => {
   resetGrid();
   toggleEmptyStateDisplay();
@@ -143,7 +153,7 @@ const createBookCard = (book) => {
   pages.textContent = `${book.pages} pages`;
   removeBtn.textContent = "Remove";
 
-  // readBtn.onclick = bookshelf.toggleRead(title);
+  readBtn.onclick = toggleRead;
   removeBtn.onclick = removeBookFromGrid;
 
   if (book.hasRead) {
